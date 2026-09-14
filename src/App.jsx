@@ -1,4 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes,
+Route } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   Bell, BookOpen, CheckCircle2, ChevronRight, CircleUserRound, FileSearch,
@@ -349,7 +352,7 @@ function Dashboard({data,user,updateData}) {
       <div className="panel"><SectionHead title="My lost items"/>{lost.length?lost.map(x=><DashboardItem key={x.id} item={x} type="lost"/>):<Empty title="No lost reports" text="Report a lost item when needed." link="/report/lost"/>}</div>
       <div className="panel"><SectionHead title="My found items"/>{found.length?found.map(x=><DashboardItem key={x.id} item={x} type="found"/>):<Empty title="No found reports" text="Report an item you found." link="/report/found"/>}</div>
     </div>
-    <div className="panel"><SectionHead title="Notifications"/>{notes.length?notes.slice(0,8).map(n=><div className="notification" key={n.id}><Bell size={17}/><div><b>{n.text}</b><small>{new Date(n.createdAt).toLocaleString()}</small></div></div>):<Empty title="All clear" text="You have no notifications." />}</div>
+    <div className="panel"><SectionHead title="Notifications"/>{notes.length?notes.slice(0,8).map(n=><div className="notification" key={n.id}><Bell size={17}/><div><b>{n.text}</b><small>{new Date(n.createdAt).toLocaleString()}</small></div></div>):<Empty title="All clear" text="You have no notifications."/ >}</div>
     <div className="panel"><SectionHead title="Help find my item — sightings"/>{sightings.length?sightings.map(s=><div className="sighting" key={s.id}><MapPin size={17}/><div><b>{s.location}</b><p>{s.description}</p><small>{s.date} {s.time}</small></div></div>):<p className="muted">No sightings have been reported for your lost items.</p>}</div>
   </div>;
 }
